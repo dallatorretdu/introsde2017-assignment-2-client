@@ -1,42 +1,81 @@
 package unitn.dallatorre.client;
 
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.WebResource;
-import com.sun.jersey.api.client.ClientResponse;
+import java.util.List;
 
-public class MainTest {
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.glassfish.jersey.client.ClientConfig;
+import org.glassfish.jersey.filter.LoggingFilter;
+
+import unitn.dallatorre.entities.People;
+import unitn.dallatorre.entities.Person;
+
+public class MainTest extends ClientEvaluation {
 	private static final String ADDRESS = "http://localhost:8080/SDE_2_SERVER";
 
-	public static void main(String[] argv) {
+	private static int first_person_id, last_person_id;
+	private static Person first_person;
+	
+	public static void main(String[] argv) throws Exception {
 		System.out.println("SERVER URL : " + ADDRESS);
-		try {
+		System.out.println();
+		requestNo01_checkNumberOfPeople();
+		requestNo02_CheckFirstPeopleExists();
+		requestNo03_ChangeFirstPersonName();
+	}
 
-			Client client = Client.create();
-			WebResource webResource = client.resource(ADDRESS+"/person");
+	private static void requestNo01_checkNumberOfPeople() throws Exception {
+		WebTarget webTarget = generateWebTarget("/person");
+		
+		Invocation.Builder invocationBuilder =  webTarget.request(MediaType.APPLICATION_XML);
+		Response response = invocationBuilder.get();
+		response.bufferEntity();
+		
+		People people = response.readEntity(People.class);
+		List<Person> listOfPersons = people.getPersons();
 
-			ClientResponse response = webResource.accept("application/xml").get(ClientResponse.class);
-
-			if (response.getStatus() != 200) {
-			   throw new RuntimeException("Failed : HTTP error code : " + response.getStatus());
-			}
-			
-			printResponse(response, webResource, 0,"GET","");
-
-			String output = response.getEntity(String.class);
-
-		  } catch (Exception e) {
-
-			e.printStackTrace();
-
-		  }
+		first_person_id = listOfPersons.get(0).getId();
+		last_person_id = listOfPersons.get(listOfPersons.size()-1).getId();
+		printResponse(response, webTarget, 1,"GET","", listOfPersons.size()>=5);
 	}
 	
-	public static void printResponse(ClientResponse response, WebResource webResource, int number, String method, String contentType) {
+	private static void requestNo02_CheckFirstPeopleExists() throws Exception {
+		WebTarget webTarget = generateWebTarget("/person/"+first_person_id);
+		
+		Invocation.Builder invocationBuilder =  webTarget.request(MediaType.APPLICATION_XML);
+		Response response = invocationBuilder.get();
 		response.bufferEntity();
-		System.out.println("Request #["+number+"]: ["+method+"] ["+webResource.getURI()+"] Accept: ["+response.getType()+"] Content-type: ["+contentType+"] \n" + 
-							"\t=> Result: ["+response.getStatusInfo()+"]\n" + 
-							"\t=> HTTP Status: ["+response.getStatus()+"]\n" + 
-							"[BODY]\n" + 
-							"\t"+response.getEntity(String.class));
+		
+		first_person = response.readEntity(Person.class);
+		
+		printResponse(response, webTarget, 2, "GET","", response.getStatus()==200);
+	}
+	
+	private static void requestNo03_ChangeFirstPersonName() throws Exception {
+		WebTarget webTarget = generateWebTarget("/person/"+first_person_id);
+		
+		String previousName = first_person.getFirstname();
+		first_person.setFirstname(first_person.getFirstname()+"_EDIT");
+		first_person.setActivitypreference(null);
+		
+		Invocation.Builder invocationBuilder =  webTarget.request(MediaType.APPLICATION_XML);
+		Response response = invocationBuilder.put(Entity.entity(first_person, MediaType.APPLICATION_XML));
+		response.bufferEntity();
+		
+		first_person = response.readEntity(Person.class);
+		
+		printResponse(response, webTarget, 3, "PUT", "APPLICATION_XML", first_person.getFirstname().equals(previousName+"_EDIT"));
+	}
+	
+	private static WebTarget generateWebTarget(String target) {
+		Client client = ClientBuilder.newClient( new ClientConfig().register( LoggingFilter.class ) );
+		WebTarget webTarget = client.target(ADDRESS).path(target);
+		return webTarget;
 	}
 }

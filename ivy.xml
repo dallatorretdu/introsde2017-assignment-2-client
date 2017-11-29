@@ -30,7 +30,7 @@
         <dependency org="javax.xml.bind" name="jaxb-api" rev="2.2.11"/>
         <dependency org="com.sun.xml.bind" name="jaxb-impl" rev="2.2.7"/>
         <dependency org="com.sun.xml.bind" name="jaxb-xjc" rev="2.2.7"/>
-        
+        <dependency org="xerces" name="xercesImpl" rev="2.8.0"/>
        
         <dependency org="net.sf.dozer" name="dozer" rev="5.5.1"/>
         <dependency org="joda-time" name="joda-time" rev="2.4"/>
@@ -44,9 +44,9 @@
 		<dependency org="com.fasterxml.jackson.core" name="jackson-databind" rev="2.4.2"/>
     	<dependency org="com.fasterxml.jackson.module" name="jackson-module-jaxb-annotations" rev="2.4.1"/>
     	
-    	<dependency org="com.sun.jersey" name="jersey-client" rev="1.19.4"/>
-    	<dependency org="com.sun.jersey" name="jersey-core" rev="1.13-b01"/>
+    	<dependency org="org.glassfish.jersey.core" name="jersey-client" rev="2.5.1"/>
     	<dependency org="javax.ws.rs" name="javax.ws.rs-api" rev="2.0-m02"/>
+    	
         
     </dependencies>
 	
