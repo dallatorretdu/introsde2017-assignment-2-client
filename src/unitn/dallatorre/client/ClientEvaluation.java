@@ -16,9 +16,10 @@ public class ClientEvaluation {
 		String resString = ((result) ? "OK" : "ERROR");
 		System.out.println("Request #["+number+"]: ["+method+"] ["+webTarget.getUri()+"] Accept: ["+response.getMediaType()+"] Content-type: ["+contentType+"] \n" + 
 							"\t=> Result: ["+resString+"]\n" + 
-							"\t=> HTTP Status: ["+response.getStatus()+"]\n" + 
-							new XmlFormatter().format(response.readEntity(String.class))
-							);
+							"\t=> HTTP Status: ["+response.getStatus()+"]");
+		if ( response.getStatus()!=204 ) {
+			System.out.println(new XmlFormatter().format(response.readEntity(String.class)));
+		}
 	}
 	
 	protected static Document loadXMLFromString(String xml) throws Exception{
