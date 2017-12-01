@@ -3,6 +3,7 @@ package unitn.dallatorre.client;
 import java.io.StringReader;
 
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -18,7 +19,12 @@ public class ClientEvaluation {
 							"\t=> Result: ["+resString+"]\n" + 
 							"\t=> HTTP Status: ["+response.getStatus()+"]");
 		if ( response.getStatus()!=204 ) {
-			System.out.println(new XmlFormatter().format(response.readEntity(String.class)));
+			if( response.getMediaType().equals(MediaType.APPLICATION_XML) ) {
+				System.out.println(new XmlFormatter().format(response.readEntity(String.class)));
+			}
+			else {
+				System.out.println(response.readEntity(String.class));
+			}
 		}
 	}
 	
