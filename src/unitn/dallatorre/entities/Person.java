@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-
+//Refer to the server's entities
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Person implements Serializable{

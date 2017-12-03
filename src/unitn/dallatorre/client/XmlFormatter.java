@@ -19,16 +19,17 @@ public class XmlFormatter {
     public XmlFormatter() {
     }
 
+    // Method used to format an XML answer into a pretty printable string
     public String format(String unformattedXml) {
         try {
-            final Document document = parseXmlFile(unformattedXml);
+            final Document document = parseXmlFile(unformattedXml);		// Parse the XML as String
 
             OutputFormat format = new OutputFormat(document);
-            format.setLineWidth(65);
+            format.setLineWidth(65);									// set parameters for the formatter
             format.setIndenting(true);
             format.setIndent(2);
             Writer out = new StringWriter();
-            XMLSerializer serializer = new XMLSerializer(out, format);
+            XMLSerializer serializer = new XMLSerializer(out, format);	//Write the new XML
             serializer.serialize(document);
 
             return out.toString();
@@ -37,7 +38,7 @@ public class XmlFormatter {
         }
     }
 
-    private Document parseXmlFile(String in) {
+    private Document parseXmlFile(String in) {						// Just parse the string to a Document
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();

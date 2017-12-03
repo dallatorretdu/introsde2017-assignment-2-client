@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlAccessType;
-
+//Refer to the server's entities
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name="activityType")
 public class ActivityType implements Serializable {
