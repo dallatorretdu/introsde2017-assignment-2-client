@@ -6,6 +6,8 @@
 !ivy.xml
 !README.md
 !.gitignore
+!client-server-json.log
+!client-server-xml.log
 
 !WebContent/
 !WebContent/*/

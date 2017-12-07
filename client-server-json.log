@@ -1,0 +1,204 @@
+SERVER URL : https://introsde-assignment-2-dallator.herokuapp.com
+Request #[1]: [GET] [https://introsde-assignment-2-dallator.herokuapp.com/person] Accept: [application/json] Content-type: [] 
+	=> Result: [OK]
+	=> HTTP Status: [200]
+{"person": [
+  {
+    "activitypreference": [{
+      "name": "Cycling",
+      "description": "Going on 2 wheels",
+      "place": "Lung  Adige",
+      "id": 2,
+      "type": null,
+      "startdate": 1512659345733
+    }],
+    "firstname": "Giulio",
+    "birthdate": 1512659345856,
+    "id": 7,
+    "lastname": "Dallatorre"
+  },
+  {
+    "activitypreference": [{
+      "name": "Dancing",
+      "description": "Moving randomly",
+      "place": "Papafico",
+      "id": 3,
+      "type": null,
+      "startdate": 1512659345741
+    }],
+    "firstname": "Stefano",
+    "birthdate": 1512659345876,
+    "id": 8,
+    "lastname": "Tavonatti"
+  },
+  {
+    "activitypreference": [{
+      "name": "Drinking",
+      "description": "Getting drunk",
+      "place": "H-Acca",
+      "id": 4,
+      "type": null,
+      "startdate": 1512659345749
+    }],
+    "firstname": "Pinco",
+    "birthdate": 1512659345896,
+    "id": 9,
+    "lastname": "Pallino"
+  },
+  {
+    "activitypreference": [{
+      "name": "DOTA",
+      "description": "DOTA is Life",
+      "place": "col Tonno",
+      "id": 5,
+      "type": null,
+      "startdate": 1512659345756
+    }],
+    "firstname": "Manuel",
+    "birthdate": 1512659345907,
+    "id": 10,
+    "lastname": "Dezulian"
+  },
+  {
+    "activitypreference": [{
+      "name": "Randomly generated",
+      "description": null,
+      "place": "Random place",
+      "id": 13,
+      "type": null,
+      "startdate": 1512663754773
+    }],
+    "firstname": "Mario_EDIT",
+    "birthdate": 1512659345766,
+    "id": 6,
+    "lastname": "Rossi"
+  }
+]}
+Request #[2]: [GET] [https://introsde-assignment-2-dallator.herokuapp.com/person/7] Accept: [application/json] Content-type: [] 
+	=> Result: [OK]
+	=> HTTP Status: [200]
+{
+  "activitypreference": [{
+    "name": "Cycling",
+    "description": "Going on 2 wheels",
+    "place": "Lung  Adige",
+    "id": 2,
+    "type": {"id": "Sport"},
+    "startdate": 1512659345733
+  }],
+  "firstname": "Giulio",
+  "birthdate": 1512659345856,
+  "id": 7,
+  "lastname": "Dallatorre"
+}
+Request #[3]: [PUT] [https://introsde-assignment-2-dallator.herokuapp.com/person/7] Accept: [application/json] Content-type: [application/json] 
+	=> Result: [OK]
+	=> HTTP Status: [200]
+{
+  "activitypreference": [{
+    "name": "Cycling",
+    "description": "Going on 2 wheels",
+    "place": "Lung  Adige",
+    "id": 2,
+    "type": {"id": "Sport"},
+    "startdate": 1512659345733
+  }],
+  "firstname": "Giulio_EDIT",
+  "birthdate": 1512659345856,
+  "id": 7,
+  "lastname": "Dallatorre"
+}
+Request #[4]: [POST] [https://introsde-assignment-2-dallator.herokuapp.com/person] Accept: [application/json] Content-type: [application/json] 
+	=> Result: [OK]
+	=> HTTP Status: [201]
+{
+  "activitypreference": [{
+    "name": "Dota col Tonno - generated",
+    "description": "Automatically Generated",
+    "place": "A casa del Dezu - generated",
+    "id": 15,
+    "type": {"id": "Dota"},
+    "startdate": 1512663761611
+  }],
+  "firstname": "Firstname",
+  "birthdate": 1512663761611,
+  "id": 14,
+  "lastname": "L+3825441"
+}
+Request #[5]: [DELETE] [https://introsde-assignment-2-dallator.herokuapp.com/person/14] Accept: [null] Content-type: [] 
+	=> Result: [OK]
+	=> HTTP Status: [204]
+
+Request #[6]: [GET] [https://introsde-assignment-2-dallator.herokuapp.com/activity_types] Accept: [application/json] Content-type: [] 
+	=> Result: [OK]
+	=> HTTP Status: [200]
+{"activityType": [
+  "Sport",
+  "Social",
+  "Dota"
+]}
+Request #[7]: [GET] [https://introsde-assignment-2-dallator.herokuapp.com/person/6/Sport] Accept: [application/json] Content-type: [] 
+	=> Result: [OK]
+	=> HTTP Status: [200]
+{"activity": [{
+  "name": "Running",
+  "description": "Moving on your own power",
+  "place": "Albere",
+  "id": 1,
+  "type": {"id": "Sport"},
+  "startdate": 1512659345714
+}]}
+Request #[8]: [GET] [https://introsde-assignment-2-dallator.herokuapp.com/person/6/Sport/1] Accept: [application/json] Content-type: [] 
+	=> Result: [OK]
+	=> HTTP Status: [200]
+{"activity": [{
+  "name": "Running",
+  "description": "Moving on your own power",
+  "place": "Albere",
+  "id": 1,
+  "type": {"id": "Sport"},
+  "startdate": 1512659345714
+}]}
+Request #[9]: [POST] [https://introsde-assignment-2-dallator.herokuapp.com/person/7/Sport] Accept: [application/json] Content-type: [application/json] 
+	=> Result: [OK]
+	=> HTTP Status: [201]
+{"activity": [
+  {
+    "name": "Cycling",
+    "description": "Going on 2 wheels",
+    "place": "Lung  Adige",
+    "id": 2,
+    "type": {"id": "Sport"},
+    "startdate": 1512659345733
+  },
+  {
+    "name": "Randomly generated",
+    "description": null,
+    "place": "Random place",
+    "id": 16,
+    "type": {"id": "Sport"},
+    "startdate": 1512663767126
+  }
+]}
+Request #[10]: [PUT] [https://introsde-assignment-2-dallator.herokuapp.com/person/7/Social/16] Accept: [application/json] Content-type: [application/json] 
+	=> Result: [OK]
+	=> HTTP Status: [200]
+{"activity": [{
+  "name": "Randomly generated",
+  "description": null,
+  "place": "Random place",
+  "id": 16,
+  "type": {"id": "Social"},
+  "startdate": 1512663767126
+}]}
+Request #[11]: [GET] [https://introsde-assignment-2-dallator.herokuapp.com/person/7/Social?before=2017-12-08&after=2017-12-07] Accept: [application/json] Content-type: [] 
+	=> Result: [OK]
+	=> HTTP Status: [200]
+{"activity": [{
+  "name": "Randomly generated",
+  "description": null,
+  "place": "Random place",
+  "id": 16,
+  "type": {"id": "Social"},
+  "startdate": 1512663767126
+}]}

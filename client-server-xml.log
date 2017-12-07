@@ -1,0 +1,220 @@
+SERVER URL : https://introsde-assignment-2-dallator.herokuapp.com
+Request #[1]: [GET] [https://introsde-assignment-2-dallator.herokuapp.com/person] Accept: [application/xml] Content-type: [] 
+	=> Result: [OK]
+	=> HTTP Status: [200]
+<?xml version="1.0" encoding="UTF-8"?>
+<People>
+  <person id="6">
+    <firstname>Mario</firstname>
+    <lastname>Rossi</lastname>
+    <birthdate>2017-12-07T15:09:05.766Z</birthdate>
+    <activitypreference id="1">
+      <name>Running</name>
+      <description>Moving on your own power</description>
+      <place>Albere</place>
+      <startdate>2017-12-07T15:09:05.714Z</startdate>
+    </activitypreference>
+  </person>
+  <person id="7">
+    <firstname>Giulio</firstname>
+    <lastname>Dallatorre</lastname>
+    <birthdate>2017-12-07T15:09:05.856Z</birthdate>
+    <activitypreference id="2">
+      <name>Cycling</name>
+      <description>Going on 2 wheels</description>
+      <place>Lung  Adige</place>
+      <startdate>2017-12-07T15:09:05.733Z</startdate>
+    </activitypreference>
+  </person>
+  <person id="8">
+    <firstname>Stefano</firstname>
+    <lastname>Tavonatti</lastname>
+    <birthdate>2017-12-07T15:09:05.876Z</birthdate>
+    <activitypreference id="3">
+      <name>Dancing</name>
+      <description>Moving randomly</description>
+      <place>Papafico</place>
+      <startdate>2017-12-07T15:09:05.741Z</startdate>
+    </activitypreference>
+  </person>
+  <person id="9">
+    <firstname>Pinco</firstname>
+    <lastname>Pallino</lastname>
+    <birthdate>2017-12-07T15:09:05.896Z</birthdate>
+    <activitypreference id="4">
+      <name>Drinking</name>
+      <description>Getting drunk</description>
+      <place>H-Acca</place>
+      <startdate>2017-12-07T15:09:05.749Z</startdate>
+    </activitypreference>
+  </person>
+  <person id="10">
+    <firstname>Manuel</firstname>
+    <lastname>Dezulian</lastname>
+    <birthdate>2017-12-07T15:09:05.907Z</birthdate>
+    <activitypreference id="5">
+      <name>DOTA</name>
+      <description>DOTA is Life</description>
+      <place>col Tonno</place>
+      <startdate>2017-12-07T15:09:05.756Z</startdate>
+    </activitypreference>
+  </person>
+</People>
+
+Request #[2]: [GET] [https://introsde-assignment-2-dallator.herokuapp.com/person/6] Accept: [application/xml] Content-type: [] 
+	=> Result: [OK]
+	=> HTTP Status: [200]
+<?xml version="1.0" encoding="UTF-8"?>
+<person id="6">
+  <firstname>Mario</firstname>
+  <lastname>Rossi</lastname>
+  <birthdate>2017-12-07T15:09:05.766Z</birthdate>
+  <activitypreference id="1">
+    <name>Running</name>
+    <description>Moving on your own power</description>
+    <place>Albere</place>
+    <type>
+      <id>Sport</id>
+    </type>
+    <startdate>2017-12-07T15:09:05.714Z</startdate>
+  </activitypreference>
+</person>
+
+Request #[3]: [PUT] [https://introsde-assignment-2-dallator.herokuapp.com/person/6] Accept: [application/xml] Content-type: [application/xml] 
+	=> Result: [OK]
+	=> HTTP Status: [200]
+<?xml version="1.0" encoding="UTF-8"?>
+<person id="6">
+  <firstname>Mario_EDIT</firstname>
+  <lastname>Rossi</lastname>
+  <birthdate>2017-12-07T15:09:05.766Z</birthdate>
+  <activitypreference id="1">
+    <name>Running</name>
+    <description>Moving on your own power</description>
+    <place>Albere</place>
+    <type>
+      <id>Sport</id>
+    </type>
+    <startdate>2017-12-07T15:09:05.714Z</startdate>
+  </activitypreference>
+</person>
+
+Request #[4]: [POST] [https://introsde-assignment-2-dallator.herokuapp.com/person] Accept: [application/xml] Content-type: [application/xml] 
+	=> Result: [OK]
+	=> HTTP Status: [201]
+<?xml version="1.0" encoding="UTF-8"?>
+<person id="11">
+  <firstname>Firstname</firstname>
+  <lastname>L+6394570</lastname>
+  <birthdate>2017-12-07T16:22:27.244Z</birthdate>
+  <activitypreference id="12">
+    <name>Dota col Tonno - generated</name>
+    <description>Automatically Generated</description>
+    <place>A casa del Dezu - generated</place>
+    <type>
+      <id>Dota</id>
+    </type>
+    <startdate>2017-12-07T16:22:27.244Z</startdate>
+  </activitypreference>
+</person>
+
+Request #[5]: [DELETE] [https://introsde-assignment-2-dallator.herokuapp.com/person/11] Accept: [null] Content-type: [] 
+	=> Result: [OK]
+	=> HTTP Status: [204]
+
+Request #[6]: [GET] [https://introsde-assignment-2-dallator.herokuapp.com/activity_types] Accept: [application/xml] Content-type: [] 
+	=> Result: [OK]
+	=> HTTP Status: [200]
+<?xml version="1.0" encoding="UTF-8"?>
+<activityTypes>
+  <activityType>Sport</activityType>
+  <activityType>Social</activityType>
+  <activityType>Dota</activityType>
+</activityTypes>
+
+Request #[7]: [GET] [https://introsde-assignment-2-dallator.herokuapp.com/person/10/Dota] Accept: [application/xml] Content-type: [] 
+	=> Result: [OK]
+	=> HTTP Status: [200]
+<?xml version="1.0" encoding="UTF-8"?>
+<activities>
+  <activity id="5">
+    <name>DOTA</name>
+    <description>DOTA is Life</description>
+    <place>col Tonno</place>
+    <type>
+      <id>Dota</id>
+    </type>
+    <startdate>2017-12-07T15:09:05.756Z</startdate>
+  </activity>
+</activities>
+
+Request #[8]: [GET] [https://introsde-assignment-2-dallator.herokuapp.com/person/10/Dota/5] Accept: [application/xml] Content-type: [] 
+	=> Result: [OK]
+	=> HTTP Status: [200]
+<?xml version="1.0" encoding="UTF-8"?>
+<activities>
+  <activity id="5">
+    <name>DOTA</name>
+    <description>DOTA is Life</description>
+    <place>col Tonno</place>
+    <type>
+      <id>Dota</id>
+    </type>
+    <startdate>2017-12-07T15:09:05.756Z</startdate>
+  </activity>
+</activities>
+
+Request #[9]: [POST] [https://introsde-assignment-2-dallator.herokuapp.com/person/6/Sport] Accept: [application/xml] Content-type: [application/xml] 
+	=> Result: [OK]
+	=> HTTP Status: [201]
+<?xml version="1.0" encoding="UTF-8"?>
+<activities>
+  <activity id="1">
+    <name>Running</name>
+    <description>Moving on your own power</description>
+    <place>Albere</place>
+    <type>
+      <id>Sport</id>
+    </type>
+    <startdate>2017-12-07T15:09:05.714Z</startdate>
+  </activity>
+  <activity id="13">
+    <name>Randomly generated</name>
+    <place>Random place</place>
+    <type>
+      <id>Sport</id>
+    </type>
+    <startdate>2017-12-07T16:22:34.773Z</startdate>
+  </activity>
+</activities>
+
+Request #[10]: [PUT] [https://introsde-assignment-2-dallator.herokuapp.com/person/6/Social/13] Accept: [application/xml] Content-type: [application/xml] 
+	=> Result: [OK]
+	=> HTTP Status: [200]
+<?xml version="1.0" encoding="UTF-8"?>
+<activities>
+  <activity id="13">
+    <name>Randomly generated</name>
+    <place>Random place</place>
+    <type>
+      <id>Social</id>
+    </type>
+    <startdate>2017-12-07T16:22:34.773Z</startdate>
+  </activity>
+</activities>
+
+Request #[11]: [GET] [https://introsde-assignment-2-dallator.herokuapp.com/person/6/Social?before=2017-12-08&after=2017-12-07] Accept: [application/xml] Content-type: [] 
+	=> Result: [OK]
+	=> HTTP Status: [200]
+<?xml version="1.0" encoding="UTF-8"?>
+<activities>
+  <activity id="13">
+    <name>Randomly generated</name>
+    <place>Random place</place>
+    <type>
+      <id>Social</id>
+    </type>
+    <startdate>2017-12-07T16:22:34.773Z</startdate>
+  </activity>
+</activities>
+

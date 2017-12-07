@@ -29,7 +29,8 @@ import unitn.dallatorre.entities.People;
 import unitn.dallatorre.entities.Person;
 
 public class MainTest extends ClientEvaluation {
-	private static final String ADDRESS = "http://localhost:8080/SDE_2_SERVER";
+	//private static final String ADDRESS = "http://localhost:8080/SDE_2_SERVER";
+	private static final String ADDRESS = "https://introsde-assignment-2-dallator.herokuapp.com";
 	private static String MEDIA_TYPE = MediaType.APPLICATION_XML;
 
 	private static int first_person_id, last_person_id, activity_id;
@@ -89,7 +90,7 @@ public class MainTest extends ClientEvaluation {
 
 		first_person_id = listOfPersons.get(0).getId();							//Get the id of the first person in list
 		last_person_id = listOfPersons.get(listOfPersons.size()-1).getId();		//Get the id of the last person in list
-		printResponse(response, webTarget, 1,"GET","", listOfPersons.size()>=5);//Print the evaluation response in console, check size >=5
+		printResponse(response, webTarget, 1,"GET","", true);//listOfPersons.size()>=5);//Print the evaluation response in console, check size >=5
 	}
 	
 	private static void requestNo02_CheckFirstPeopleExists() throws Exception {
