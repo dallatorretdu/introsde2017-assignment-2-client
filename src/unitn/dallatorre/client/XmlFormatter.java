@@ -16,11 +16,8 @@ import java.io.Writer;
 
 public class XmlFormatter {
 
-    public XmlFormatter() {
-    }
-
     // Method used to format an XML answer into a pretty printable string
-    public String format(String unformattedXml) {
+    public static String format(String unformattedXml) {
         try {
             final Document document = parseXmlFile(unformattedXml);		// Parse the XML as String
 
@@ -38,7 +35,7 @@ public class XmlFormatter {
         }
     }
 
-    private Document parseXmlFile(String in) {						// Just parse the string to a Document
+    private static Document parseXmlFile(String in) {						// Just parse the string to a Document
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();

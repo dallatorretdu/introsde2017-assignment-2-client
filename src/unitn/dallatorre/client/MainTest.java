@@ -1,5 +1,9 @@
 package unitn.dallatorre.client;
 
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,6 +44,8 @@ public class MainTest extends ClientEvaluation {
 		System.out.println("SENDING XML TESTS");
 		System.out.println();
 		MEDIA_TYPE = MediaType.APPLICATION_XML;				// this sets the media type for the requests and teh accepted answer
+		setWriter( new BufferedWriter(new OutputStreamWriter(new FileOutputStream("client-server-xml.log"), "utf-8")) );
+		getWriter().write("SERVER URL : " + ADDRESS + "\n");
 		requestNo01_checkNumberOfPeople();
 		requestNo02_CheckFirstPeopleExists();
 		requestNo03_ChangeFirstPersonName();
@@ -51,10 +57,12 @@ public class MainTest extends ClientEvaluation {
 		requestNo09_putNewActivity();
 		requestNo10_UpdateActivity();
 		requestNo11_getActivitiesWithCertainData();
-
-		System.out.println("SENDING JSON TESTS");
+		System.out.println("\nSENDING JSON TESTS");
 		System.out.println();
 		MEDIA_TYPE = MediaType.APPLICATION_JSON;
+		closeWriter();
+		setWriter( new BufferedWriter(new OutputStreamWriter(new FileOutputStream("client-server-json.log"), "utf-8")) );
+		getWriter().write("SERVER URL : " + ADDRESS + "\n");
 		requestNo01_checkNumberOfPeople();
 		requestNo02_CheckFirstPeopleExists();
 		requestNo03_ChangeFirstPersonName();
@@ -66,6 +74,7 @@ public class MainTest extends ClientEvaluation {
 		requestNo09_putNewActivity();
 		requestNo10_UpdateActivity();
 		requestNo11_getActivitiesWithCertainData();
+		closeWriter();
 	}
 
 	private static void requestNo01_checkNumberOfPeople() throws Exception {

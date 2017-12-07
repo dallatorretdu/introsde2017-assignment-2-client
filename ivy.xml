@@ -31,6 +31,7 @@
         <dependency org="com.sun.xml.bind" name="jaxb-impl" rev="2.2.7"/>
         <dependency org="com.sun.xml.bind" name="jaxb-xjc" rev="2.2.7"/>
         <dependency org="xerces" name="xercesImpl" rev="2.8.0"/>
+        <dependency org="org.json" name="json" rev="20171018"/>
        
         <dependency org="net.sf.dozer" name="dozer" rev="5.5.1"/>
         <dependency org="joda-time" name="joda-time" rev="2.4"/>
