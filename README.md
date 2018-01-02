@@ -19,4 +19,6 @@ which is resposible for handling all the requests coming based on /person
 The responses are created using a ResponseBuilder, and the data is automatically marshalled/unmarshalled.
 I had to implement some wrapper classes in order to have the correct output as per specifications (return the list of activity types). These objects only contain a List of the wrapped objects.
 
+just run ant execute.client to compile and run the client
+
 I did implemented an exception mapper on the server, which catches every jersey WebApplicationException and returns them to the client with the same error code, but with the added stacktrace. Debugging was a nightmare without this. If the exception does not come from the application a INTERNAL_SERVER_ERROR is thrown with the "cause". If such an error comes to the cluent with no apparent stacktrace or with DAO initialization failure it means that the heroku app has hanged and needs a restart.
